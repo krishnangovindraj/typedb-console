@@ -23,6 +23,7 @@ import com.vaticle.typedb.client.api.answer.ConceptMapGroup;
 import com.vaticle.typedb.client.api.answer.Numeric;
 import com.vaticle.typedb.client.api.answer.NumericGroup;
 import com.vaticle.typedb.client.api.concept.Concept;
+import com.vaticle.typedb.client.api.concept.rawvalue.RawValue;
 import com.vaticle.typedb.client.api.concept.thing.Attribute;
 import com.vaticle.typedb.client.api.concept.thing.Relation;
 import com.vaticle.typedb.client.api.concept.thing.Thing;
@@ -105,6 +106,8 @@ public class Printer {
         StringBuilder sb = new StringBuilder();
         if (concept instanceof Attribute<?>) {
             sb.append(attributeDisplayString(concept.asThing().asAttribute()));
+        } else if (concept instanceof RawValue<?>) {
+            sb.append(rawValueDisplayString(concept.asRawValue()));
         } else if (concept instanceof Type) {
             sb.append(typeDisplayString(concept.asType(), tx));
         } else {
@@ -168,6 +171,10 @@ public class Printer {
 
     private String attributeDisplayString(Attribute<?> attribute) {
         return com.vaticle.typeql.lang.common.util.Strings.valueToString(attribute.getValue());
+    }
+
+    private String rawValueDisplayString(RawValue<?> asRawValue) {
+        return com.vaticle.typeql.lang.common.util.Strings.valueToString(asRawValue.getValue());
     }
 
     private String colorKeyword(String s) {
