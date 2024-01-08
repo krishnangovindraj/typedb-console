@@ -137,8 +137,8 @@ deploy_artifact(
     target = ":assemble-linux-x86_64-targz",
     artifact_group = "vaticle_typedb_console",
     artifact_name = "typedb-console-linux-x86_64-{version}.tar.gz",
-    snapshot = deployment['artifact.snapshot'],
-    release = deployment['artifact.release'],
+    snapshot = deployment['artifact']['snapshot']['upload'],
+    release = deployment['artifact']['release']['upload'],
     visibility = ["//visibility:public"],
 )
 
@@ -147,8 +147,8 @@ deploy_artifact(
     target = ":assemble-linux-arm64-targz",
     artifact_group = "vaticle_typedb_console",
     artifact_name = "typedb-console-linux-arm64-{version}.tar.gz",
-    snapshot = deployment['artifact.snapshot'],
-    release = deployment['artifact.release'],
+    snapshot = deployment['artifact']['snapshot']['upload'],
+    release = deployment['artifact']['release']['upload'],
     visibility = ["//visibility:public"],
 )
 
@@ -157,8 +157,8 @@ deploy_artifact(
     target = ":assemble-mac-x86_64-zip",
     artifact_group = "vaticle_typedb_console",
     artifact_name = "typedb-console-mac-x86_64-{version}.zip",
-    snapshot = deployment['artifact.snapshot'],
-    release = deployment['artifact.release'],
+    snapshot = deployment['artifact']['snapshot']['upload'],
+    release = deployment['artifact']['release']['upload'],
     visibility = ["//visibility:public"],
 )
 
@@ -167,8 +167,8 @@ deploy_artifact(
     target = ":assemble-mac-arm64-zip",
     artifact_group = "vaticle_typedb_console",
     artifact_name = "typedb-console-mac-arm64-{version}.zip",
-    snapshot = deployment['artifact.snapshot'],
-    release = deployment['artifact.release'],
+    snapshot = deployment['artifact']['snapshot']['upload'],
+    release = deployment['artifact']['release']['upload'],
     visibility = ["//visibility:public"],
 )
 
@@ -177,8 +177,8 @@ deploy_artifact(
     target = ":assemble-windows-x86_64-zip",
     artifact_group = "vaticle_typedb_console",
     artifact_name = "typedb-console-windows-x86_64-{version}.zip",
-    snapshot = deployment['artifact.snapshot'],
-    release = deployment['artifact.release'],
+    snapshot = deployment['artifact']['snapshot']['upload'],
+    release = deployment['artifact']['release']['upload'],
     visibility = ["//visibility:public"],
 )
 
