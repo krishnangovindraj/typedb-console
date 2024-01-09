@@ -68,8 +68,8 @@ jobs:
           arch: amd64
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(git rev-parse HEAD) //:deploy-linux-x86_64-targz -- snapshot
 
@@ -81,8 +81,8 @@ jobs:
           arch: arm64
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(git rev-parse HEAD) //:deploy-linux-arm64-targz -- snapshot
 
@@ -93,8 +93,8 @@ jobs:
       - install-bazel-mac
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(git rev-parse HEAD) //:deploy-mac-x86_64-zip -- snapshot
 
@@ -105,8 +105,8 @@ jobs:
       - install-bazel-mac
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(git rev-parse HEAD) //:deploy-mac-arm64-zip -- snapshot
 
@@ -128,8 +128,8 @@ jobs:
           arch: amd64
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(cat VERSION) //:deploy-linux-x86_64-targz --compilation_mode=opt -- release
       - run: |
@@ -147,8 +147,8 @@ jobs:
           arch: arm64
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(cat VERSION) //:deploy-linux-arm64-targz --compilation_mode=opt -- release
       - run: |
@@ -165,8 +165,8 @@ jobs:
       - install-bazel-mac
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(cat VERSION) //:deploy-mac-x86_64-zip --compilation_mode=opt -- release
       - run: |
@@ -183,8 +183,8 @@ jobs:
       - install-bazel-mac
       - run: |
           ulimit -n 100000
-          export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
-          export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+          export DEPLOY_ARTIFACT_USERNAME=$REPO_TYPEDB_USERNAME
+          export DEPLOY_ARTIFACT_PASSWORD=$REPO_TYPEDB_PASSWORD
           bazel run @vaticle_dependencies//tool/bazelinstall:remote_cache_setup.sh
           bazel run --define version=$(cat VERSION) //:deploy-mac-arm64-zip --compilation_mode=opt -- release
       - run: |
