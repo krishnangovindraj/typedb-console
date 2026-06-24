@@ -10,7 +10,7 @@ name: Build & checkstyle
 on:
   pull_request:
   push:
-    branches: [development, master]
+    branches: [development, master, one-off/set-cargo-bazel-generator-url-ci]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -32,8 +32,10 @@ jobs:
           repository-cache: true
           google-credentials: ${{ secrets.BAZEL_CACHE_CREDENTIAL_JSON }}
           bazelrc: |
-            build --remote_cache ${{ vars.BAZEL_CACHE_URL }}
+            build --remote_cache https://storage.googleapis.com/typedb-engineers-bazel-remote-cache-europe-west1
       - name: Build everything
+        env:
+          CARGO_BAZEL_GENERATOR_URL: https://repo.typedb.com/public/public-tools/raw/versions/0.0.0/cargo-bazel-linux-x86_64
         run: bazel build //...
       - name: Checkstyle
         run: |

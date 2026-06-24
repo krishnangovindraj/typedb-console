@@ -18,8 +18,3 @@ set PATH=%PATH%;C:\Python311
 
 REM install runtime dependency for the build
 C:\Python311\python.exe -m pip install wheel
-
-REM permanently set variables for Bazel build
-SETX BAZEL_SH "C:\Program Files\Git\usr\bin\bash.exe"
-SETX BAZEL_PYTHON C:\Python311\python.exe
-SETX BAZEL_VC "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC"

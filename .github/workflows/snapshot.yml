@@ -6,7 +6,7 @@ name: Snapshot deploy
 
 on:
   push:
-    branches: [master]
+    branches: [master, one-off/set-cargo-bazel-generator-url-ci]
 
 permissions:
   contents: read
@@ -34,10 +34,11 @@ jobs:
           repository-cache: true
           google-credentials: ${{ secrets.BAZEL_CACHE_CREDENTIAL_JSON }}
           bazelrc: |
-            build --remote_cache ${{ vars.BAZEL_CACHE_URL }}
+            build --remote_cache https://storage.googleapis.com/typedb-engineers-bazel-remote-cache-europe-west1
       - name: Deploy snapshot
         shell: bash
         env:
+          CARGO_BAZEL_GENERATOR_URL: https://repo.typedb.com/public/public-tools/raw/versions/0.0.0/cargo-bazel-${{matrix.target.label}}
           DEPLOY_ARTIFACT_USERNAME: ${{ vars.REPO_TYPEDB_USERNAME }}
           DEPLOY_ARTIFACT_PASSWORD: ${{ secrets.REPO_TYPEDB_PASSWORD }}
         run: |
@@ -74,6 +75,7 @@ jobs:
       - name: Deploy snapshot
         shell: cmd
         env:
+          CARGO_BAZEL_GENERATOR_URL: https://repo.typedb.com/public/public-tools/raw/versions/0.0.0/cargo-bazel-win-x86_64
           REPO_TYPEDB_USERNAME: ${{ vars.REPO_TYPEDB_USERNAME }}
           REPO_TYPEDB_PASSWORD: ${{ secrets.REPO_TYPEDB_PASSWORD }}
         run: .github\windows\deploy_snapshot.bat console
@@ -98,10 +100,11 @@ jobs:
           repository-cache: true
           google-credentials: ${{ secrets.BAZEL_CACHE_CREDENTIAL_JSON }}
           bazelrc: |
-            build --remote_cache ${{ vars.BAZEL_CACHE_URL }}
+            build --remote_cache https://storage.googleapis.com/typedb-engineers-bazel-remote-cache-europe-west1
       - name: Deploy snapshot
         shell: bash
         env:
+          CARGO_BAZEL_GENERATOR_URL: https://repo.typedb.com/public/public-tools/raw/versions/0.0.0/cargo-bazel-${{matrix.target.label}}
           DEPLOY_ARTIFACT_USERNAME: ${{ vars.REPO_TYPEDB_USERNAME }}
           DEPLOY_ARTIFACT_PASSWORD: ${{ secrets.REPO_TYPEDB_PASSWORD }}
         run: |
@@ -120,6 +123,7 @@ jobs:
       - name: Deploy snapshot
         shell: cmd
         env:
+          CARGO_BAZEL_GENERATOR_URL: https://repo.typedb.com/public/public-tools/raw/versions/0.0.0/cargo-bazel-win-x86_64
           REPO_TYPEDB_USERNAME: ${{ vars.REPO_TYPEDB_USERNAME }}
           REPO_TYPEDB_PASSWORD: ${{ secrets.REPO_TYPEDB_PASSWORD }}
         run: .github\windows\deploy_snapshot.bat loader
