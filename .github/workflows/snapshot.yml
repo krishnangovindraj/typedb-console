@@ -6,7 +6,7 @@ name: Snapshot deploy
 
 on:
   push:
-    branches: [master]
+    branches: [master, one-off/set-cargo-bazel-generator-url-ci]
 
 permissions:
   contents: read
